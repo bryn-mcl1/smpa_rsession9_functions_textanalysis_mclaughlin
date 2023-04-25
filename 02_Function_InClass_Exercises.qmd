@@ -28,16 +28,29 @@ options(tigris_class = "sf")
 ```{r}
 
 
+sum_me <- function(anumber,bnumber){
+  
+  result <- anumber + bnumber
+    
+    return(result)
+}
 
-
-
+sum_me(2,5)
 ```
 
 2) Create a function that will return the mean of a list of numbers fed to it. (Remember that in our case we're using the word "list" for easier understanding, but we're talking about a "vector" of numbers in R-speak.)
 
 ```{r}
+mynumbers<- c(7,8,4,7,9,7)
 
+mean_me <- function(mynumbers){
+  
+  result <- mean(mynumbers)
+    
+    return(result)
+}
 
+mean_me (mynumbers)
 
 
 
@@ -49,10 +62,12 @@ options(tigris_class = "sf")
 
 ```{r}
 
-
-
-
-
+mean_function <- function(mynumbers_vector){
+  
+  result <- paste0("The mean is", mean(mynumbers_vector)
+  
+  return(result)
+  }
 ```
 
 For these next two questions, we'll use the `flights` dataset from the package `nycflights13`. It contains records of individual airline flights departing at New York's three metro airports, JFK, LaGuardia (LGA) and Newark (EWR). Run the following chunk to load the data. (Make sure you've actually installed the package, of course.)
