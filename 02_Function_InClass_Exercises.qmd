@@ -52,22 +52,21 @@ mean_me <- function(mynumbers){
 
 mean_me (mynumbers)
 
-
-
-
 ```
 
 3) Now, expand on the function you made above, and instead of just returning the mean number alone, have it return the sentence:
 *"The mean is ___"*. (Where the blank is the mean.)
 
 ```{r}
-
-mean_function <- function(mynumbers_vector){
-  
-  result <- paste0("The mean is", mean(mynumbers_vector)
-  
+mean_with_text <- function(mynumbers)
+  resulting_mean <- mean_me(mynumbers)
+  result <- paste0("The mean is", resulting_mean)
   return(result)
-  }
+
+
+
+
+
 ```
 
 For these next two questions, we'll use the `flights` dataset from the package `nycflights13`. It contains records of individual airline flights departing at New York's three metro airports, JFK, LaGuardia (LGA) and Newark (EWR). Run the following chunk to load the data. (Make sure you've actually installed the package, of course.)
@@ -83,11 +82,22 @@ head(flights)
 
 ```{r}
 
+airportname <- "JFK"
+
+flights %>% 
+  filter(origin == airportname)
 
 
 
+filter_flights_by_origin <- function(airportname) {
+  
+  result <- flights %>% 
+  filter(origin == airportname)
+  
+  return(result)
+}
 
-
+filter_flights_by_origin("LGA")
 
 ```
 
@@ -99,7 +109,24 @@ head(flights)
 
 ```{r}
 
+airportname <- "JFK"
 
+flights %>% 
+  filter(origin == airportname) %>% 
+  count(carrier)
+
+count_by_airline_foroneairport <- function(airportname) {
+  results <- flights %>% 
+    filter(origin == airportname) %>% 
+    count(carrier, sort= TRUE)
+  return(results)
+  
+}
+
+count_by_airline_foroneairport("EWR")
+
+
+```
 
 
 
