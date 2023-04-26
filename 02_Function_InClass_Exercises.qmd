@@ -115,11 +115,12 @@ flights %>%
   filter(origin == airportname) %>% 
   count(carrier)
 
-count_by_airline_foroneairport <- function(airportname) {
+top_airline_foroneairport <- function(airportname) {
   results <- flights %>% 
     filter(origin == airportname) %>% 
-    count(carrier, sort= TRUE)
-  return(results)
+    count(carrier, sort= TRUE) %>% 
+    head(1)
+  return(results) 
   
 }
 
